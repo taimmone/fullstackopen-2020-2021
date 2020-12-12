@@ -15,10 +15,13 @@ in any project's folder to start the development server and navigate to [http://
 
 ```
 .
-└── part1
-    ├── anecdotes
-    ├── courseinfo
-    └── unicafe
+├── part1
+│   ├── anecdotes
+│   ├── courseinfo
+│   └── unicafe
+└── part2
+    └── courseinfo
+    ...
 ...
 ```
 
