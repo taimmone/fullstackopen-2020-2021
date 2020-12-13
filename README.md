@@ -20,7 +20,8 @@ in any project's folder to start the development server and navigate to [http://
 │   ├── courseinfo
 │   └── unicafe
 └── part2
-    └── courseinfo
+    ├── courseinfo
+    └── phonebook
     ...
 ...
 ```

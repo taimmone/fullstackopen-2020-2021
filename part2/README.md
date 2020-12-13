@@ -19,3 +19,15 @@ courseinfo
     └── modules
         └── Course.js
 ```
+
+### 2. Phonebook
+
+```
+phonebook
+└── src
+    ├── App.js
+    ├── components
+        ├── Filter.js
+        ├── PersonForm.js
+        └── Persons.js
+```
