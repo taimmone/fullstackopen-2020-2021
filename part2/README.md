@@ -32,3 +32,16 @@ phonebook
         ├── PersonForm.js
         └── Persons.js
 ```
+
+### 3. Data for countries
+
+```
+countries
+└── src
+    ├── App.js
+    └── components
+        ├── Country.js
+        ├── Results.js
+        └── Search.js
+
+```

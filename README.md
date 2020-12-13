@@ -21,8 +21,8 @@ in any project's folder to start the development server and navigate to [http://
 │   └── unicafe
 └── part2
     ├── courseinfo
-    └── phonebook
-    ...
+    ├── phonebook
+    └── countries
 ...
 ```
 
