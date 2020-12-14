@@ -1,4 +1,4 @@
-import Search from './Search';
+import { Search } from './Search';
 import Results from './Results';
 import Country from './Country';
 

@@ -1,17 +1,15 @@
 const TableRow = ({ name, value }) => (
-  <tr>
-    <td>{name}</td>
-    <td>{value}</td>
-  </tr>
+  <div>
+    <h3>{name}</h3>
+    <span>{value}</span>
+  </div>
 );
 
 const CountryData = ({ country }) => (
-  <table>
-    <tbody>
-      <TableRow name="capital" value={country.capital} />
-      <TableRow name="population" value={country.population} />
-    </tbody>
-  </table>
+  <div className="country-data">
+    <TableRow name="Capital" value={country.capital} />
+    <TableRow name="Population" value={country.population} />
+  </div>
 );
 
 const CountryFlag = ({ country: { name, flag } }) => (
@@ -26,16 +24,15 @@ const CountryFlag = ({ country: { name, flag } }) => (
 );
 
 const Country = ({ country }) => (
-  <div>
-    <h1>{country.name}</h1>
+  <div className={'country-visible'}>
+    <CountryFlag country={country} />
     <CountryData country={country} />
-    <h2>languages</h2>
-    <ul>
+    <h3>Languages</h3>
+    <ul className="languages">
       {country.languages.map(lang => (
         <li key={lang.iso639_1}>{lang.name}</li>
       ))}
     </ul>
-    <CountryFlag country={country} />
   </div>
 );
 

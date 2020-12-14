@@ -1,22 +1,37 @@
 import Country from './Country';
+import { matchCountry } from './Search';
 
-const Results = ({ countries, filter }) => {
-  const results = filter
-    ? countries.filter(country => country.name.toLowerCase().includes(filter.toLowerCase()))
-    : countries;
+const Result = ({ country, toggleVisibility, onlyResult }) => {
+  return (
+    <div className="result">
+      <button onClick={() => toggleVisibility(country.alpha3Code)}>
+        <h2>{country.name}</h2>
+      </button>
+      {(country.visible || onlyResult) && <Country country={country} />}
+    </div>
+  );
+};
 
-  if (results.length === 0 || !filter) return null;
-  if (results.length === 1) return <Country country={results[0]} />;
-  if (results.length <= 10) {
+const Results = ({ countries, filter, toggleVisibility }) => {
+  const results = filter ? countries.filter(country => matchCountry(country, filter)) : countries;
+
+  if (!filter) return null;
+  if (results.length === 0) return <p className="myText">No matches</p>;
+  if (results.length <= 10)
     return (
-      <ul>
+      <div id="results">
         {results.map(country => (
-          <li key={country.alpha3Code}>{country.name}</li>
+          <Result
+            key={country.alpha3Code}
+            country={country}
+            toggleVisibility={toggleVisibility}
+            onlyResult={results.length === 1 ? true : false}
+          />
         ))}
-      </ul>
+      </div>
     );
-  }
-  if (results.length > 10) return <p>Too many matches, specify another filter</p>;
+  if (results.length > 10)
+    return <p className="myText">Too many matches, specify another filter</p>;
 };
 
 export default Results;

@@ -6,17 +6,34 @@ const App = () => {
   const [countries, setCountries] = useState([]);
   const [searchFilter, setFilter] = useState('');
   useEffect(() => {
-    get('https://restcountries.eu/rest/v2/all').then(res => {
-      setCountries(res.data);
-    });
+    get('https://restcountries.eu/rest/v2/all').then(res =>
+      setCountries(res.data.map(country => ({ ...country, visible: false })))
+    );
   }, []);
 
-  const handleSearch = event => setFilter(event.target.value);
+  const toggleVisibility = key => {
+    const oldValues = countries.find(({ alpha3Code }) => alpha3Code === key);
+    return setCountries(
+      countries.map(country => ({
+        ...country,
+        visible: country === oldValues ? !oldValues.visible : false,
+      }))
+    );
+  };
+
+  const handleSearch = event => {
+    setFilter(event.target.value.toUpperCase());
+    toggleVisibility('');
+  };
 
   return (
-    <div>
-      <Search handleInput={handleSearch} />
-      <Results countries={countries} filter={searchFilter} />
+    <div id="container">
+      <Search text="Find countries:" handleInput={handleSearch} />
+      <Results
+        countries={countries}
+        filter={searchFilter}
+        toggleVisibility={key => toggleVisibility(key)}
+      />
     </div>
   );
 };
