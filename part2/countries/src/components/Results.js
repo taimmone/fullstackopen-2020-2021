@@ -1,37 +1,14 @@
-import Country from './Country';
-import { matchCountry } from './Search';
+const TextResult = ({ text }) => (
+  <p className="myText">
+    <strong>{text}</strong>
+  </p>
+);
 
-const Result = ({ country, toggleVisibility, onlyResult }) => {
-  return (
-    <div className="result">
-      <button onClick={() => toggleVisibility(country.alpha3Code)}>
-        <h2>{country.name}</h2>
-      </button>
-      {(country.visible || onlyResult) && <Country country={country} />}
-    </div>
-  );
-};
-
-const Results = ({ countries, filter, toggleVisibility }) => {
-  const results = filter ? countries.filter(country => matchCountry(country, filter)) : countries;
-
-  if (!filter) return null;
-  if (results.length === 0) return <p className="myText">No matches</p>;
-  if (results.length <= 10)
-    return (
-      <div id="results">
-        {results.map(country => (
-          <Result
-            key={country.alpha3Code}
-            country={country}
-            toggleVisibility={toggleVisibility}
-            onlyResult={results.length === 1 ? true : false}
-          />
-        ))}
-      </div>
-    );
-  if (results.length > 10)
-    return <p className="myText">Too many matches, specify another filter</p>;
+const Results = ({ children }) => {
+  if (!children) return null;
+  if (children.length === 0) return <TextResult text={'No matches'} />;
+  if (children.length > 10) return <TextResult text={'Too many matches, specify another filter'} />;
+  if (children.length <= 10) return <div id="results">{children}</div>;
 };
 
 export default Results;
