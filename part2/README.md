@@ -1,6 +1,6 @@
 # Part 2 - Communicating with server
 
-This folder contains the solutions for __Part 2__ of _Full Stack Open 2020_.
+This folder contains the solutions for **Part 2** of _Full Stack Open 2020_.
 
 The part consists of three React projects, each having their own subfolder.
 
@@ -26,11 +26,17 @@ courseinfo
 phonebook
 ├── db.json
 └── src
+    ├── App.css
     ├── App.js
-    └── components
-        ├── Filter.js
-        ├── PersonForm.js
-        └── Persons.js
+    ├── index.css
+    ├── components
+    │   ├── Filter.js
+    │   ├── Notification.js
+    │   ├── Person.js
+    │   ├── PersonForm.js
+    │   └── Persons.js
+    └── services
+        └── phonebookService.js
 ```
 
 ### 3. Data for countries

@@ -1,6 +1,6 @@
 # Phonebook
 
-Solution for exercises 2.6-2.11 can be found here.
+Solution for exercises 2.6-2.11 and 2.15-2.18 can be found here.
 
 ## Instructions
 ### Install and start the app:
