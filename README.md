@@ -19,10 +19,13 @@ in any project's folder to start the development server and navigate to [http://
 │   ├── anecdotes
 │   ├── courseinfo
 │   └── unicafe
-└── part2
-    ├── courseinfo
-    ├── phonebook
-    └── countries
+├── part2
+│   ├── countries
+│   ├── courseinfo
+│   └── phonebook
+└── part4
+    └── bloglist
+    ...
 ...
 ```
 
