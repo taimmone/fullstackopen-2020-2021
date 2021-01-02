@@ -14,6 +14,15 @@ Only the files related to solutions are listed.
 
 ```
 bloglist
-└── index.js
+├── controllers
+│   └── blogs.js
+├── models
+│   └── blog.js
+├── utils
+│   ├── config.js
+│   ├── logger.js
+│   └── middleware.js
+├── app.js
+├── index.js
 ```
 
