@@ -18,7 +18,7 @@ const listWithOneBlog = [
   },
 ];
 
-const blogs = [
+const listWithManyBlogs = [
   {
     _id: '5a422a851b54a676234d17f7',
     title: 'React patterns',
@@ -81,7 +81,7 @@ describe('total likes', () => {
   });
 
   test('of a bigger list is calculated right', () => {
-    const result = listHelper.totalLikes(blogs);
+    const result = listHelper.totalLikes(listWithManyBlogs);
     expect(result).toBe(36);
   });
 });
@@ -98,8 +98,8 @@ describe('favorite blog', () => {
   });
 
   test('of a bigger list is correct', () => {
-    const result = listHelper.favoriteBlog(blogs);
-    expect(result).toEqual(blogs[2]);
+    const result = listHelper.favoriteBlog(listWithManyBlogs);
+    expect(result).toEqual(listWithManyBlogs[2]);
   });
 });
 
@@ -110,13 +110,15 @@ describe('most blogs', () => {
   });
 
   test('when list has only one blog equals the blog', () => {
-    const { author } = listHelper.mostBlogs(listWithOneBlog);
+    const { author, blogs } = listHelper.mostBlogs(listWithOneBlog);
     expect(author).toBe('Edsger W. Dijkstra');
+    expect(blogs).toBe(1);
   });
 
   test('of a bigger list is correct', () => {
-    const { author } = listHelper.mostBlogs(blogs);
+    const { author, blogs } = listHelper.mostBlogs(listWithManyBlogs);
     expect(author).toBe('Robert C. Martin');
+    expect(blogs).toBe(3);
   });
 });
 
@@ -127,12 +129,14 @@ describe('most likes', () => {
   });
 
   test('when list has only one blog equals the blog', () => {
-    const { author } = listHelper.mostLikes(listWithOneBlog);
+    const { author, likes } = listHelper.mostLikes(listWithOneBlog);
     expect(author).toBe('Edsger W. Dijkstra');
+    expect(likes).toBe(5);
   });
 
   test('of a bigger list is correct', () => {
-    const { author } = listHelper.mostLikes(blogs);
+    const { author, likes } = listHelper.mostLikes(listWithManyBlogs);
     expect(author).toBe('Edsger W. Dijkstra');
+    expect(likes).toBe(17);
   });
 });
