@@ -1,5 +1,5 @@
 const logger = {
-  info: (...params) => console.log(...params),
+  info: (...params) => process.env.NODE_ENV !== 'test' && console.log(...params),
   error: (...params) => console.error(...params),
 };
 
