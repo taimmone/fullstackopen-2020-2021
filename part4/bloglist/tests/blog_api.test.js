@@ -26,4 +26,11 @@ test('all blogs are returned', async () => {
   expect(res.body).toHaveLength(helper.initialBlogs.length);
 });
 
+test('unique identifier property is named "id", not "_id"', async () => {
+  const res = await api.get('/api/blogs');
+  const blog = res.body[0];
+  expect(blog.id).toBeDefined();
+  expect(blog._id).toBe(undefined);
+});
+
 afterAll(() => mongoose.connection.close());
