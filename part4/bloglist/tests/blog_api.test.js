@@ -57,6 +57,24 @@ describe('POST /api/blogs', () => {
       res.body.map(({ title, author, url, likes }) => ({ title, author, url, likes }))
     ).toContainEqual(newBlog);
   });
+
+  test('missing likes property defaults to 0', async () => {
+    const newBlog = {
+      title: 'How many GDPR notices did I get?',
+      author: 'William Woodruff',
+      url: 'https://blog.yossarian.net/2018/05/26/How-many-GDPR-notices-did-i-get',
+    };
+
+    await api
+      .post('/api/blogs')
+      .send(newBlog)
+      .expect(201)
+      .expect('Content-Type', /application\/json/);
+
+    const res = await api.get('/api/blogs');
+    const likes = res.body.find(({ title }) => title === newBlog.title).likes;
+    expect(likes).toEqual(0);
+  });
 });
 
 afterAll(() => mongoose.connection.close());
