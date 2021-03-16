@@ -9,3 +9,14 @@ The part consists of X React projects, each having their own subfolder.
 Below is a list of each project and their structure in this part.
 
 Only the files related to solutions are listed.
+
+### 1. Unicafe revisited
+
+```
+unicafe-redux
+└── src
+    ├── index.js
+    ├── reducer.js
+    └── reducer.test.js
+```
+
